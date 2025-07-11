@@ -1,0 +1,812 @@
+/* --- Configurações Globais e de Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000000;
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    padding-top: 65px; 
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- Estrutura Principal do Site --- */
+.site-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 146px; 
+}
+
+/* --- Animação de Scroll --- */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Estilização do Cabeçalho --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: #000000;
+    border-bottom: 1px solid #1E1E1E;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative; /* Necessário para o logo centralizado */
+}
+
+/* --- Estilização do Logo Antigo Removida --- */
+.logo {
+    /* Estilos do logo antigo foram removidos ou adaptados para o rodapé */
+}
+
+/* --- NOVO: Logo Centralizado --- */
+.header-logo-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header-logo-center img {
+    height: 35px; /* Ajuste a altura do seu símbolo */
+    width: auto;
+    display: block;
+}
+
+/* --- Estilização da Navegação --- */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 6px;
+}
+
+.main-nav a {
+    font-weight: 550;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 8px 4px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #FFFFFF;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* --- NOVO: Ícones Sociais --- */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social-icons a {
+    display: inline-flex; /* Usar inline-flex para alinhar o SVG corretamente */
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.social-icons a svg {
+    width: 20px;
+    height: 20px;
+    stroke: #FFFFFF;
+    transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover svg {
+    stroke: #b6b6b6;
+    transform: scale(1.1);
+}
+
+
+/* --- Seção Hero --- */
+.hero-section {
+    position: relative;
+    height: calc(100vh - 65px); 
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 75%, #101010 100%);
+    z-index: 2;
+}
+
+.hero-content-container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content {
+    max-width: 55%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #B6B6B6;
+    margin: 0 auto;
+    margin-bottom: 45px;
+    max-width: 80%;
+}
+
+/* Estilos para a seta de rolagem */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: -80px; 
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border-left: 2px solid #B6B6B6;
+    border-bottom: 2px solid #B6B6B6;
+    transform: rotate(-45deg);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Classe para esconder a seta após o clique ou scroll */
+.scroll-down-arrow.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* Animação de "pulo" para a seta */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0) rotate(-45deg);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-15px) rotate(-45deg);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px) rotate(-45deg);
+    }
+}
+
+
+/* --- Estilo do Botão --- */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #d1d1d1;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- Seção Sobre --- */
+.about-section {
+    background-color: #000000;
+    padding: 120px 0;
+}
+
+.about-content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.about-photo-wrapper {
+    flex: 1;
+    max-width: 450px;
+}
+
+.about-photo {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.about-text-wrapper {
+    flex: 1.5;
+}
+
+.about-greeting {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.about-intro {
+    font-size: 24px;
+    font-weight: 500;
+    color: #B6B6B6;
+    margin-bottom: 24px;
+}
+
+.about-text-wrapper p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 1.5;
+    margin-bottom: 24px;
+	text-align: justify;
+}
+
+.about-text-wrapper .btn {
+    margin-top: 16px;
+}
+
+/* --- Seção Método --- */
+.method-section {
+    background-color: #000000;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.method-header {
+    margin-bottom: 120px;
+}
+
+.method-section .section-title {
+    font-size: 36px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    line-height: 1.3;
+}
+
+.accordion-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #1E1E1E;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.accordion-arrow {
+    transition: transform 0.3s ease;
+    min-width: 24px;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    color: #B6B6B6;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.accordion-content p {
+    padding: 0 0 24px 0;
+}
+
+.accordion-item.active .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+/* --- Seção de Projetos --- */
+.projects-section {
+    background-color: #101010;
+    padding: 60px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.projects-header {
+    margin-bottom: 120px;
+}
+
+.section-tag {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 20px;
+    line-height: 1.3;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel {
+    position: relative;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.slide {
+    width: 520px;
+    height: 680px;
+    position: absolute;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, z-index 0s 0.3s;
+    opacity: 0;
+    overflow: hidden; 
+    border-radius: 20px; 
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease; 
+}
+
+.slide.active:hover img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    color: #FFFFFF;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none; 
+}
+
+.slide.active:hover .project-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.project-info p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #d1d1d1;
+    margin: 4px 0 0;
+}
+
+.slide.active { transform: translateX(0) translateZ(0) scale(1); opacity: 1; z-index: 10; }
+.slide.prev-slide { transform: translateX(-120%) translateZ(-200px) scale(1); opacity: 0.4; z-index: 5; }
+.slide.next-slide { transform: translateX(120%) translateZ(-200px) scale(1); opacity: 0.4; z-index: 5; }
+.slide.prev-outer-slide { transform: translateX(-245%) translateZ(-300px) scale(1); opacity: 0.2; z-index: 1; }
+.slide.next-outer-slide { transform: translateX(245%) translateZ(-300px) scale(1); opacity: 0.2; z-index: 1; }
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.carousel-btn:hover { background-color: rgba(255, 255, 255, 0.4); }
+.carousel-btn svg { color: white; width: 28px; height: 28px; }
+.carousel-btn.prev { left: 15%; }
+.carousel-btn.next { right: 15%; }
+
+
+/* --- Seção Resultados --- */
+.results-section {
+    background-color: #101010;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.results-header {
+    margin-bottom: 80px;
+}
+
+.marquee-container {
+    width: 100%;
+    overflow: hidden; 
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-content {
+    display: flex; 
+    width: fit-content; 
+    animation: marquee-scroll 40s linear infinite; 
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 0 50px; 
+    flex-shrink: 0; 
+    white-space: nowrap; 
+}
+
+.result-item::before {
+    content: '';
+    display: block;
+    width: 210px;
+    height: 2px;
+    background: linear-gradient(to right, #CF3DF4, #0E10B1);
+    margin-bottom: 20px;
+}
+
+.result-item span {
+    display: block;
+    font-size: 16px;
+    color: #B6B6B6;
+}
+
+.result-item .result-number {
+    font-size: 52px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: -12px 0;
+}
+
+.results-footer {
+    margin-top: 10px;
+    margin-bottom: 80px; /* Adicionado para criar espaço abaixo do botão */
+    text-align: center;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%); 
+    }
+}
+
+/* --- Seção de Contato --- */
+.contact-section {
+    background-color: #000000;
+    padding: 60px 0;
+}
+
+.contact-header {
+    margin-bottom: 60px;
+}
+
+.contact-title {
+    font-size: 32px;
+    font-weight: 700; 
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+.contact-subtitle {
+    font-size: 18px;
+    color: #B6B6B6;
+    line-height: 1.6;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.form-grid {
+    display: flex;
+    gap: 40px; 
+    margin-bottom: 20px;
+}
+
+.form-column {
+    flex: 1; 
+}
+
+.form-column-title {
+    font-size: 18px;
+    font-weight: 600; 
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group.full-width {
+    width: 100%;
+}
+
+/* ATUALIZAÇÃO: Estilos da label do formulário */
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #FFFFFF; /* Cor principal da label agora é branca */
+    margin-bottom: 8px;
+    font-weight: 500; /* Dando um pouco mais de peso para a pergunta */
+}
+
+/* ATUALIZAÇÃO: Estilo para a nota '(obrigatório)' ou '(opcional)' */
+.form-group label .label-note {
+    color: #B6B6B6; /* Mantém a cor cinza para a nota */
+    font-size: 0.85em; /* Deixa a nota ligeiramente menor */
+    font-weight: 400; /* Deixa a nota com peso normal */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    background-color: #000000;
+    border: 1px solid #B6B6B6;
+    border-radius: 4px;
+    padding: 12px;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group select {
+    height: 52px; 
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888888;
+}
+
+.form-group select {
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23B6B6B6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.form-group select:invalid {
+    color: #888888;
+}
+
+.form-group textarea {
+    resize: vertical; 
+}
+
+.contact-form .btn {
+	width: 100%;
+    padding: 16px;
+}
+
+/* Estilos de Validação */
+.form-group .error-message {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none; 
+}
+
+.form-group.invalid input,
+.form-group.invalid select,
+.form-group.invalid textarea {
+    border-color: #ff4d4d; 
+}
+
+.form-group.invalid .error-message {
+    display: block; 
+}
+
+/* MICRO-INTERAÇÃO: Estilos para animação da mensagem de sucesso */
+.success-message {
+    color: #4dff88;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.success-message.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* --- Estilos do Rodapé --- */
+.main-footer {
+    background-color: #000000;
+    border-top: 1px solid #1E1E1E; 
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Adicionado para o posicionamento absoluto do copyright */
+}
+
+/* Estilos para o logo no rodapé (mantidos do cabeçalho original) */
+.footer-container .logo a {
+    display: flex;
+    align-items: baseline;
+}
+
+.footer-container .logo .logo-symbol {
+    height: 28px; /* Diminuído ligeiramente */
+    width: auto;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.footer-container .logo .brand-name {
+    font-weight: 700;
+    font-size: 18px; /* Diminuído ligeiramente */
+    color: #FFFFFF;
+}
+
+.footer-container .logo .brand-title {
+    font-weight: 400;
+    font-size: 11px; /* Diminuído ligeiramente */
+    color: #FFFFFF;
+    margin-left: 6px;
+    position: relative; 
+    top: -2px;
+}
+
+.copyright {
+    color: #B6B6B6;
+    font-weight: 400; 
+    font-size: 12px;
+    /* Novas regras para centralização absoluta */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap; /* Impede que o texto quebre */
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+}
+
+/* Escondendo a navegação do rodapé para não duplicar com os ícones do header */
+.footer-right .main-nav {
+    display: none;
+}
+
+.back-to-top {
+    background-color: #101010;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #3a3a3a;
+}
