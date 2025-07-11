@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
         const projects = [
-            { src: 'imagens/projeto1.PNG', name: 'Casa A&P', area: '225m²', location: 'Catalão - GO' },
+            { src: 'imagens/projeto1.png', name: 'Casa A&P', area: '225m²', location: 'Catalão - GO' },
             { src: 'imagens/projeto2.PNG', name: 'Casa Lazer', area: '150m²', location: 'Bauru - RJ' },
             { src: 'imagens/projeto3.PNG', name: 'Casa C7', area: '162m²', location: 'Ipatinga - MG' },
             { src: 'imagens/projeto4.PNG', name: 'Casa M&D', area: '135m²', location: 'São Francisco do Sul - SC' },
