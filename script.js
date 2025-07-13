@@ -113,13 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
         const projects = [
-            { src: 'imagens/projeto1.PNG', name: 'Casa A&P', area: '225m²', location: 'Catalão - GO' },
-            { src: 'imagens/projeto2.PNG', name: 'Casa Lazer', area: '150m²', location: 'Bauru - RJ' },
-            { src: 'imagens/projeto3.PNG', name: 'Casa C7', area: '162m²', location: 'Ipatinga - MG' },
-            { src: 'imagens/projeto4.PNG', name: 'Casa M&D', area: '135m²', location: 'São Francisco do Sul - SC' },
-            { src: 'imagens/projeto5.PNG', name: 'Casa P6', area: '155m²', location: 'Londrina - PR' },
-            { src: 'imagens/projeto6.PNG', name: 'Residência V&N', area: '180m²', location: 'Igrejinha - RS' },
-            { src: 'imagens/projeto7.PNG', name: 'Casa FS', area: '255m²', location: 'Senador La Rocque - MA' }
+            { src: 'imagens/projeto1.png', name: 'Casa A&P', area: '225m²', location: 'Catalão - GO' },
+            { src: 'imagens/projeto2.png', name: 'Casa Lazer', area: '150m²', location: 'Bauru - RJ' },
+            { src: 'imagens/projeto3.png', name: 'Casa C7', area: '162m²', location: 'Ipatinga - MG' },
+            { src: 'imagens/projeto4.png', name: 'Casa M&D', area: '135m²', location: 'São Francisco do Sul - SC' },
+            { src: 'imagens/projeto5.png', name: 'Casa P6', area: '155m²', location: 'Londrina - PR' },
+            { src: 'imagens/projeto6.png', name: 'Residência V&N', area: '180m²', location: 'Igrejinha - RS' },
+            { src: 'imagens/projeto7.png', name: 'Casa FS', area: '255m²', location: 'Senador La Rocque - MA' }
         ];
 
         projects.forEach(project => {
