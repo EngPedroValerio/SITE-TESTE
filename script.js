@@ -4,20 +4,17 @@ console.log("Site carregado com sucesso!");
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- ATUALIZAÇÃO: Força a página a carregar no topo ---
-    // Reseta o histórico de scroll do navegador para manual
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
-    // Leva a janela para o topo (posição 0, 0)
     window.scrollTo(0, 0);
 
 
-    // --- ATUALIZAÇÃO: Lógica aprimorada para a seta de scroll ---
+    // --- Lógica da seta de scroll ---
     const scrollArrow = document.querySelector('.scroll-down-arrow');
     const projectsSection = document.querySelector('#projetos');
-    let isArrowHidden = false; // Flag para controlar o estado da seta
+    let isArrowHidden = false; 
 
-    // Função para esconder a seta de forma reutilizável
     const hideArrow = () => {
         if (!isArrowHidden) {
             scrollArrow.classList.add('hidden');
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Evento de clique na seta
     if (scrollArrow && projectsSection) {
         scrollArrow.addEventListener('click', () => {
             const header = document.querySelector('.site-header');
@@ -37,26 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
             
-            // Esconde a seta após o clique
             hideArrow();
         });
     }
 
-    // --- ATUALIZAÇÃO: Observador para esconder a seta ao rolar até a seção de projetos ---
     const projectSectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            // Se a seção de projetos estiver visível e a seta ainda não foi escondida
             if (entry.isIntersecting && !isArrowHidden) {
                 hideArrow();
-                // Para de observar após a primeira vez para economizar recursos
                 observer.unobserve(projectsSection);
             }
         });
     }, {
-        threshold: 0.1 // Ativa quando 10% da seção estiver visível
+        threshold: 0.1 
     });
 
-    // Inicia a observação da seção de projetos
     if (projectsSection) {
         projectSectionObserver.observe(projectsSection);
     }
@@ -122,13 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
         const projects = [
-            { src: 'imagens/projeto1.png', name: 'Casa A&P', area: '225m²', location: 'Catalão - GO' },
-            { src: 'imagens/projeto2.png', name: 'Casa Lazer', area: '150m²', location: 'Bauru - RJ' },
-            { src: 'imagens/projeto3.png', name: 'Casa C7', area: '162m²', location: 'Ipatinga - MG' },
-            { src: 'imagens/projeto4.png', name: 'Casa M&D', area: '135m²', location: 'São Francisco do Sul - SC' },
-            { src: 'imagens/projeto5.png', name: 'Casa P6', area: '155m²', location: 'Londrina - PR' },
-            { src: 'imagens/projeto6.png', name: 'Residência V&N', area: '180m²', location: 'Igrejinha - RS' },
-            { src: 'imagens/projeto7.png', name: 'Casa FS', area: '255m²', location: 'Senador La Rocque - MA' }
+            { src: 'imagens/projeto1.PNG', name: 'Casa A&P', area: '225m²', location: 'Catalão - GO' },
+            { src: 'imagens/projeto2.PNG', name: 'Casa Lazer', area: '150m²', location: 'Bauru - RJ' },
+            { src: 'imagens/projeto3.PNG', name: 'Casa C7', area: '162m²', location: 'Ipatinga - MG' },
+            { src: 'imagens/projeto4.PNG', name: 'Casa M&D', area: '135m²', location: 'São Francisco do Sul - SC' },
+            { src: 'imagens/projeto5.PNG', name: 'Casa P6', area: '155m²', location: 'Londrina - PR' },
+            { src: 'imagens/projeto6.PNG', name: 'Residência V&N', area: '180m²', location: 'Igrejinha - RS' },
+            { src: 'imagens/projeto7.PNG', name: 'Casa FS', area: '255m²', location: 'Senador La Rocque - MA' }
         ];
 
         projects.forEach(project => {
@@ -177,11 +168,12 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoPlay();
     }
 
-    // --- LÓGICA DO FORMULÁRIO DE CONTATO ---
+    // --- LÓGICA DO FORMULÁRIO DE CONTATO (ATUALIZADA) ---
     const form = document.getElementById('contact-form');
     if (form) {
         const whatsappInput = document.getElementById('whatsapp');
-        const successMessage = document.getElementById('success-message');
+        // ATUALIZAÇÃO: Renomeado para 'statusMessage' para lidar com sucesso e erro.
+        const statusMessage = document.getElementById('status-message'); 
 
         whatsappInput.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, ''); 
@@ -198,41 +190,84 @@ document.addEventListener('DOMContentLoaded', function() {
             e.target.value = value;
         });
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
+        // Função para validar o formulário
+        function validateForm() {
             let isValid = true;
-            successMessage.classList.remove('visible'); 
+            statusMessage.classList.remove('visible', 'success', 'error');
 
             const requiredFields = form.querySelectorAll('[required]');
             requiredFields.forEach(field => {
                 const group = field.parentElement;
                 const errorMsg = group.querySelector('.error-message');
                 group.classList.remove('invalid');
-                errorMsg.textContent = '';
+                if (errorMsg) errorMsg.textContent = '';
+                
                 if (field.value.trim() === '') {
                     isValid = false;
                     group.classList.add('invalid');
-                    errorMsg.textContent = 'Este campo é obrigatório.';
+                    if (errorMsg) errorMsg.textContent = 'Este campo é obrigatório.';
                 }
             });
 
             const emailField = document.getElementById('email');
-            const emailGroup = emailField.parentElement;
             if (emailField.value.trim() !== '') {
                 const emailRegex = /^\S+@\S+\.\S+$/;
                 if (!emailRegex.test(emailField.value)) {
                     isValid = false;
+                    const emailGroup = emailField.parentElement;
+                    const errorMsg = emailGroup.querySelector('.error-message');
                     emailGroup.classList.add('invalid');
-                    emailGroup.querySelector('.error-message').textContent = 'Por favor, insira um e-mail válido.';
+                    if(errorMsg) errorMsg.textContent = 'Por favor, insira um e-mail válido.';
                 }
             }
+            return isValid;
+        }
+
+        // ATUALIZAÇÃO: Lógica de envio assíncrono com fetch
+        async function handleSubmit(event) {
+            event.preventDefault();
             
-            if (isValid) {
-                console.log('Formulário válido. Enviando dados...');
-                successMessage.textContent = 'Obrigado pelo contato, o sonho da sua casa já está mais próximo!';
-                successMessage.classList.add('visible');
-                form.reset(); 
+            if (!validateForm()) {
+                return;
             }
-        });
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusMessage.textContent = "Obrigado pelo contato, o sonho da sua casa já está mais próximo!";
+                    statusMessage.classList.add('visible', 'success');
+                    form.reset();
+                } else {
+                    const responseData = await response.json();
+                    if (Object.hasOwn(responseData, 'errors')) {
+                        const errorMessage = responseData["errors"].map(error => error["message"]).join(", ");
+                        throw new Error(errorMessage);
+                    }
+                    throw new Error('Ocorreu um problema ao enviar o formulário.');
+                }
+            } catch (error) {
+                statusMessage.textContent = "Oops! Houve um erro ao enviar sua mensagem. Tente novamente mais tarde.";
+                statusMessage.classList.add('visible', 'error');
+            } finally {
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            }
+        }
+
+        form.addEventListener("submit", handleSubmit);
     }
 });
