@@ -33,7 +33,7 @@
             <!-- 2. Logo centralizado -->
             <div class="header-logo-center">
                 <a href="#">
-                    <img src="imagens/symbol.png" alt="Símbolo Pedro Valério">
+                    <img src="imagens/symbol.PNG" alt="Símbolo Pedro Valério">
                 </a>
             </div>
 
@@ -148,29 +148,54 @@
             <a href="#contato" class="btn btn-primary">RESOLVA TAMBÉM O SEU PROJETO</a>
         </div>
 
-        <!-- 5. Seção Resultados -->
+        <!-- 5. Seção Resultados (MODIFICADA) -->
         <section id="resultados" class="results-section scroll-reveal">
-            <div class="results-header">
-                <p class="section-tag">RESULTADOS</p>
-                <h2 class="section-title">O que nós já<br>entregamos?</h2>
-            </div>
-            <div class="marquee-container">
-                <div class="marquee-content">
-                    <div class="result-item"><span>Mais de</span><span class="result-number">5 mil m²</span><span>de Obra planejadas</span></div>
-                    <div class="result-item"><span>Atuante em mais de</span><span class="result-number">10</span><span>Cidades no Brasil</span></div>
-                    <div class="result-item"><span>Mais de</span><span class="result-number">50</span><span>Clientes satisfeitos</span></div>
-                    <div class="result-item"><span>Projetos</span><span class="result-number">100%</span><span>Executáveis</span></div>
-                    <div class="result-item"><span>Ao menos</span><span class="result-number">15%</span><span>de economia</span></div>
-                    <div class="result-item"><span>Entregas para</span><span class="result-number">7</span><span>Estados do País</span></div>
-                    <div class="result-item"><span>Mais de</span><span class="result-number">5 mil m²</span><span>de Obra planejadas</span></div>
-                    <div class="result-item"><span>Atuante em mais de</span><span class="result-number">10</span><span>Cidades no Brasil</span></div>
-                    <div class="result-item"><span>Mais de</span><span class="result-number">50</span><span>Clientes satisfeitos</span></div>
-                    <div class="result-item"><span>Projetos</span><span class="result-number">100%</span><span>Executáveis</span></div>
-                    <div class="result-item"><span>Ao menos</span><span class="result-number">15%</span><span>de economia</span></div>
-                    <div class="result-item"><span>Entregas para</span><span class="result-number">7</span><span>Estados do País</span></div>
+            <div class="site-container">
+                <div class="results-header">
+                    <p class="section-tag">RESULTADOS</p>
+                    <h2 class="section-title">O que nós já<br>entregamos?</h2>
+                </div>
+                <div class="results-grid">
+                    <!-- Item 1 -->
+                    <div class="result-card">
+                        <span class="result-prefix">Mais de</span>
+                        <span class="result-number">5 mil m²</span>
+                        <span class="result-suffix">de Obra planejadas</span>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="result-card">
+                        <span class="result-prefix">Atuante em mais de</span>
+                        <span class="result-number">10</span>
+                        <span class="result-suffix">Cidades no Brasil</span>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="result-card">
+                        <span class="result-prefix">Mais de</span>
+                        <span class="result-number">50</span>
+                        <span class="result-suffix">Clientes satisfeitos</span>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="result-card">
+                        <span class="result-prefix">Projetos</span>
+                        <span class="result-number">100%</span>
+                        <span class="result-suffix">Executáveis</span>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="result-card">
+                        <span class="result-prefix">Ao menos</span>
+                        <span class="result-number">15%</span>
+                        <span class="result-suffix">de economia</span>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="result-card">
+                        <span class="result-prefix">Entregas para</span>
+                        <span class="result-number">7</span>
+                        <span class="result-suffix">Estados do País</span>
+                    </div>
                 </div>
             </div>
         </section>
+
 
         <!-- Seção "Contato" -->
         <section id="contato" class="contact-section scroll-reveal">
@@ -180,13 +205,18 @@
                     <p class="contact-subtitle">Preencha a solicitação para que possamos<br>entender melhor o seu projeto e em seguida<br>marcar uma conversa.</p>
                 </div>
 
-                <form id="contact-form" class="contact-form" novalidate>
+                <!-- 
+                  ATUALIZAÇÃO IMPORTANTE:
+                  - Adicionado o atributo 'action' com a sua URL do Formspree.
+                  - Adicionado o atributo 'method' como 'POST'.
+                  - O 'novalidate' continua para que possamos usar nossa própria validação do JS.
+                -->
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/xvgqpqze" method="POST" novalidate>
                     <div class="form-grid">
                         <!-- Coluna 1 -->
                         <div class="form-column">
                             <p class="form-column-title">Informações de Contato:</p>
                             <div class="form-group">
-                                <!-- ATUALIZAÇÃO: Label dividida em spans para estilização -->
                                 <label for="name">Nome <span class="label-note">(obrigatório)</span></label>
                                 <input type="text" id="name" name="name" placeholder="Digite aqui..." required>
                                 <small class="error-message"></small>
@@ -203,7 +233,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="source">Onde nos encontrou? <span class="label-note">(obrigatório)</span></label>
-                                <!-- ATUALIZAÇÃO: Novas opções -->
                                 <select id="source" name="source" required>
                                     <option value="">Selecionar uma opção</option>
                                     <option value="google">Google</option>
@@ -220,7 +249,6 @@
                             <p class="form-column-title">Informações de Projeto:</p>
                             <div class="form-group">
                                 <label for="has-project">Já possui Projeto Arquitetônico? <span class="label-note">(obrigatório)</span></label>
-                                <!-- ATUALIZAÇÃO: Novas opções -->
                                 <select id="has-project" name="has-project" required>
                                     <option value="">Selecionar uma opção</option>
                                     <option value="sim">Sim</option>
@@ -230,7 +258,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="work-standard">Qual o Padrão da sua Obra? <span class="label-note">(obrigatório)</span></label>
-                                <!-- ATUALIZAÇÃO: Novas opções -->
                                 <select id="work-standard" name="work-standard" required>
                                     <option value="">Selecionar uma opção</option>
                                     <option value="alto-padrao">Alto padrão</option>
@@ -241,7 +268,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="area">Qual a área construída? <span class="label-note">(obrigatório)</span></label>
-                                <!-- ATUALIZAÇÃO: Novas opções -->
                                 <select id="area" name="area" required>
                                     <option value="">Selecionar uma opção</option>
                                     <option value="ate-150">Até 150m²</option>
@@ -252,7 +278,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="work-type">Qual é o tipo de obra? <span class="label-note">(obrigatório)</span></label>
-                                <!-- ATUALIZAÇÃO: Novas opções -->
                                 <select id="work-type" name="work-type" required>
                                     <option value="">Selecionar uma opção</option>
                                     <option value="terrea">Térrea</option>
@@ -272,8 +297,8 @@
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
                 </form>
-                <!-- Mensagem de Sucesso (inicialmente oculta) -->
-                <p id="success-message" class="success-message"></p>
+                <!-- Mensagem de Sucesso/Erro (inicialmente oculta) -->
+                <p id="status-message" class="status-message"></p>
             </div>
         </section>
 
@@ -283,7 +308,7 @@
         <div class="site-container footer-container">
             <div class="logo">
                 <a href="#">
-                    <img src="imagens/LOGO HEADER.png" alt="Símbolo do Logo" class="logo-symbol">
+                    <img src="imagens/LOGO HEADER.PNG" alt="Símbolo do Logo" class="logo-symbol">
                     <span class="brand-name">Pedro Valério |</span>
                     <span class="brand-title">Engenheiro Civil</span>
                 </a>
