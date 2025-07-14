@@ -3,7 +3,7 @@ console.log("Site carregado com sucesso!");
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- ATUALIZAÇÃO: Força a página a carregar no topo ---
+    // --- Força a página a carregar no topo ---
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
@@ -92,12 +92,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- LÓGICA DO ACORDEÃO (MÉTODO) ---
+    // --- LÓGICA DO ACORDEÃO (MÉTODO E FAQ) ---
+    // Este código funciona para qualquer elemento com a classe .accordion-item
     const accordionItems = document.querySelectorAll('.accordion-item');
     accordionItems.forEach(item => {
         const header = item.querySelector('.accordion-header');
         header.addEventListener('click', () => {
             const content = item.querySelector('.accordion-content');
+            
+            // Fecha outros itens abertos no mesmo container
+            const parentContainer = item.closest('.accordion-container');
+            if (parentContainer) {
+                const allItems = parentContainer.querySelectorAll('.accordion-item');
+                allItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+            }
+
+            // Abre ou fecha o item clicado
             item.classList.toggle('active');
             if (item.classList.contains('active')) {
                 content.style.maxHeight = content.scrollHeight + 'px';
@@ -168,11 +183,10 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoPlay();
     }
 
-    // --- LÓGICA DO FORMULÁRIO DE CONTATO (ATUALIZADA) ---
+    // --- LÓGICA DO FORMULÁRIO DE CONTATO ---
     const form = document.getElementById('contact-form');
     if (form) {
         const whatsappInput = document.getElementById('whatsapp');
-        // ATUALIZAÇÃO: Renomeado para 'statusMessage' para lidar com sucesso e erro.
         const statusMessage = document.getElementById('status-message'); 
 
         whatsappInput.addEventListener('input', (e) => {
@@ -190,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.target.value = value;
         });
 
-        // Função para validar o formulário
         function validateForm() {
             let isValid = true;
             statusMessage.classList.remove('visible', 'success', 'error');
@@ -223,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return isValid;
         }
 
-        // ATUALIZAÇÃO: Lógica de envio assíncrono com fetch
         async function handleSubmit(event) {
             event.preventDefault();
             
