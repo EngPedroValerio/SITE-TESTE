@@ -57,10 +57,9 @@ a {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    position: relative; /* Necessário para o logo centralizado */
+    position: relative;
 }
 
-/* --- NOVO: Logo Centralizado --- */
 .header-logo-center {
     position: absolute;
     left: 50%;
@@ -69,7 +68,7 @@ a {
 }
 
 .header-logo-center img {
-    height: 35px; /* Ajuste a altura do seu símbolo */
+    height: 35px;
     width: auto;
     display: block;
 }
@@ -113,7 +112,6 @@ a {
     transform-origin: bottom left;
 }
 
-/* --- NOVO: Ícones Sociais --- */
 .social-icons {
     display: flex;
     align-items: center;
@@ -121,7 +119,7 @@ a {
 }
 
 .social-icons a {
-    display: inline-flex; /* Usar inline-flex para alinhar o SVG corretamente */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
@@ -184,7 +182,6 @@ a {
     max-width: 55%;
     margin: 0 auto;
     text-align: center;
-    /* ATUALIZAÇÃO: Move o conteúdo para cima */
     transform: translateY(-40px);
 }
 
@@ -205,19 +202,17 @@ a {
     max-width: 80%;
 }
 
-/* Estilos para a seta de rolagem (com área de clique aumentada) */
 .scroll-down-arrow {
     position: absolute;
     bottom: -80px;
     left: 50%;
-    width: 60px;  /* Área de clique maior */
-    height: 60px; /* Área de clique maior */
+    width: 60px;
+    height: 60px;
     animation: bounce 2s infinite;
     cursor: pointer;
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Pseudo-elemento para a parte visual da seta, centralizada no container */
 .scroll-down-arrow::before {
     content: '';
     position: absolute;
@@ -230,15 +225,12 @@ a {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* Classe para esconder a seta após o clique ou scroll */
 .scroll-down-arrow.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-
-/* Animação de "pulo" para o container da seta */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateX(-50%) translateY(0);
@@ -281,7 +273,7 @@ a {
 /* --- Seção Sobre --- */
 .about-section {
     background-color: #000000;
-    padding: 120px 0;
+    padding: 60px 0;
 }
 
 .about-content-wrapper {
@@ -338,7 +330,7 @@ a {
 }
 
 .method-header {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
 }
 
 .method-section .section-title {
@@ -354,11 +346,11 @@ a {
     text-align: left;
 }
 
-.accordion-item {
+.method-section .accordion-item {
     border-bottom: 1px solid #1E1E1E;
 }
 
-.accordion-header {
+.method-section .accordion-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -368,12 +360,12 @@ a {
     font-weight: 500;
 }
 
-.accordion-arrow {
+.method-section .accordion-arrow {
     transition: transform 0.3s ease;
     min-width: 24px;
 }
 
-.accordion-content {
+.method-section .accordion-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -382,11 +374,11 @@ a {
     line-height: 1.6;
 }
 
-.accordion-content p {
+.method-section .accordion-content p {
     padding: 0 0 24px 0;
 }
 
-.accordion-item.active .accordion-arrow {
+.method-section .accordion-item.active .accordion-arrow {
     transform: rotate(180deg);
 }
 
@@ -399,7 +391,7 @@ a {
 }
 
 .projects-header {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
 }
 
 .section-tag {
@@ -516,30 +508,112 @@ a {
 .carousel-btn.next { right: 15%; }
 
 
-/* --- Seção Resultados (MODIFICADA) --- */
+/* --- Seção FAQ (REDESENHADA) --- */
+.faq-section {
+    background-color: #101010;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.faq-header {
+    margin-bottom: 80px;
+}
+
+.faq-section .accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaço entre as perguntas */
+}
+
+.faq-section .accordion-item {
+    background-color: #1c1c1c;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.faq-section .accordion-item:hover {
+    border-color: #555;
+}
+
+.faq-section .accordion-item.active {
+     border-color: #FFFFFF;
+     background-color: #222222;
+}
+
+.faq-section .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.faq-section .accordion-icon {
+    min-width: 24px;
+    transition: transform 0.3s ease;
+}
+
+.faq-section .accordion-icon .icon-minus { display: none; }
+.faq-section .accordion-icon .icon-plus { display: block; }
+
+.faq-section .accordion-item.active .accordion-icon .icon-minus { display: block; }
+.faq-section .accordion-item.active .accordion-icon .icon-plus { display: none; }
+
+.faq-section .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    color: #B6B6B6;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.faq-section .accordion-content p {
+    padding: 0 24px 24px 24px;
+    border-top: 1px solid #2a2a2a;
+    margin: 0 24px;
+    padding-top: 24px;
+}
+
+.faq-section .accordion-item.active .accordion-content p {
+    margin: 0;
+    border: none;
+    padding: 0 24px 24px 24px;
+}
+
+/* --- Botão de CTA (NOVO) --- */
+.section-cta-button {
+    margin-top: 80px;
+    text-align: center;
+}
+
+/* --- Seção Resultados --- */
 .results-section {
     background-color: #101010;
-    padding: 60px 0 120px 0; /* Aumentado padding inferior */
+    padding: 60px 0;
     text-align: center;
 }
 
 .results-header {
     margin-bottom: 80px;
-    text-align: center; /* Garantir que o cabeçalho esteja centralizado */
+    text-align: center;
 }
 
 .results-grid {
     display: grid;
-    /* Cria 3 colunas em telas maiores, 2 em médias e 1 em pequenas */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px; /* Espaçamento entre os cards */
+    gap: 40px;
     text-align: left;
 }
 
 .result-card {
     background-color: #1c1c1c;
     padding: 32px;
-    border-radius: 0; /* Borda reta, conforme solicitado */
+    border-radius: 0;
     border: 1px solid #2a2a2a;
     position: relative;
     overflow: hidden;
@@ -547,7 +621,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 180px; /* Garante altura consistente */
+    min-height: 180px;
 }
 
 .result-card:hover {
@@ -555,7 +629,6 @@ a {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Linha gradiente no topo do card */
 .result-card::before {
     content: '';
     position: absolute;
@@ -579,12 +652,6 @@ a {
     color: #FFFFFF;
     line-height: 1.1;
     margin: 4px 0;
-}
-
-.results-footer {
-    margin-top: 10px;
-    margin-bottom: 80px; /* Adicionado para criar espaço abaixo do botão */
-    text-align: center;
 }
 
 /* --- Seção de Contato --- */
@@ -639,20 +706,18 @@ a {
     width: 100%;
 }
 
-/* ATUALIZAÇÃO: Estilos da label do formulário */
 .form-group label {
     display: block;
     font-size: 14px;
-    color: #FFFFFF; /* Cor principal da label agora é branca */
+    color: #FFFFFF;
     margin-bottom: 8px;
-    font-weight: 500; /* Dando um pouco mais de peso para a pergunta */
+    font-weight: 500;
 }
 
-/* ATUALIZAÇÃO: Estilo para a nota '(obrigatório)' ou '(opcional)' */
 .form-group label .label-note {
-    color: #B6B6B6; /* Mantém a cor cinza para a nota */
-    font-size: 0.85em; /* Deixa a nota ligeiramente menor */
-    font-weight: 400; /* Deixa a nota com peso normal */
+    color: #B6B6B6;
+    font-size: 0.85em;
+    font-weight: 400;
 }
 
 .form-group input,
@@ -718,9 +783,7 @@ a {
     display: block; 
 }
 
-/* MICRO-INTERAÇÃO: Estilos para animação da mensagem de sucesso */
-.success-message {
-    color: #4dff88;
+.status-message {
     text-align: center;
     margin-top: 20px;
     font-size: 18px;
@@ -730,7 +793,14 @@ a {
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 
-.success-message.visible {
+.status-message.visible.success {
+    color: #4dff88;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.status-message.visible.error {
+    color: #ff4d4d;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -748,17 +818,16 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* Adicionado para o posicionamento absoluto do copyright */
+    position: relative;
 }
 
-/* Estilos para o logo no rodapé (mantidos do cabeçalho original) */
 .footer-container .logo a {
     display: flex;
     align-items: baseline;
 }
 
 .footer-container .logo .logo-symbol {
-    height: 28px; /* Diminuído ligeiramente */
+    height: 28px;
     width: auto;
     margin-right: 10px;
     align-self: center;
@@ -766,13 +835,13 @@ a {
 
 .footer-container .logo .brand-name {
     font-weight: 700;
-    font-size: 18px; /* Diminuído ligeiramente */
+    font-size: 18px;
     color: #FFFFFF;
 }
 
 .footer-container .logo .brand-title {
     font-weight: 400;
-    font-size: 11px; /* Diminuído ligeiramente */
+    font-size: 11px;
     color: #FFFFFF;
     margin-left: 6px;
     position: relative; 
@@ -783,12 +852,11 @@ a {
     color: #B6B6B6;
     font-weight: 400; 
     font-size: 12px;
-    /* Novas regras para centralização absoluta */
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    white-space: nowrap; /* Impede que o texto quebre */
+    white-space: nowrap;
 }
 
 .footer-right {
@@ -797,7 +865,6 @@ a {
     gap: 40px; 
 }
 
-/* Escondendo a navegação do rodapé para não duplicar com os ícones do header */
 .footer-right .main-nav {
     display: none;
 }
@@ -816,4 +883,28 @@ a {
 
 .back-to-top:hover {
     background-color: #3a3a3a;
+}
+
+/* --- BOTÃO FLUTUANTE DO WHATSAPP (NOVO) --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
 }
